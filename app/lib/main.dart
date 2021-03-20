@@ -1,3 +1,4 @@
+import 'package:app/router.dart';
 import 'package:app/src/pages/law_detail/law_detail.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
+        initialRoute: '/law-detail',
+        onGenerateRoute: MyRouter.generateRoute,
         theme: ThemeData(
-          fontFamily: "Ubuntu",
+          fontFamily: 'Ubuntu',
           // This is the theme of your application.
           //
           // Try running your application with "flutter run". You'll see the
