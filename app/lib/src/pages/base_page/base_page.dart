@@ -22,14 +22,20 @@ class BasePage extends StatelessWidget {
           child: Column(
             children: [
               child,
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0, left: 20.0),
-                  child: GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, '/navigation'),
-                    child: SizedBox(
-                      child: SvgPicture.asset("assets/images/menu_icon.svg"),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20.0,
+                      left: 20.0,
+                      bottom: 20.0,
+                    ),
+                    child: GestureDetector(
+                      onTap: () => Navigator.pushNamed(context, '/navigation'),
+                      child: SizedBox(
+                        child: SvgPicture.asset("assets/images/menu_icon.svg"),
+                      ),
                     ),
                   ),
                 ),

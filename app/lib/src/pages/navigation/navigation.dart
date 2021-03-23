@@ -35,7 +35,7 @@ class Navigation extends StatelessWidget {
                 page_title: "Zákon dne",
               ),
               NavigationButton(
-                page_route: "/TODO-all-laws",
+                page_route: "/laws-list",
                 page_title: "Všechny zákony",
               ),
               NavigationButton(
