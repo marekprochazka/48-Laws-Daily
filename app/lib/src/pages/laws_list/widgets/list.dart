@@ -8,17 +8,15 @@ class List extends StatelessWidget {
   Widget build(BuildContext context) {
     final appHeight = MediaQuery.of(context).size.height;
     final appWidth = MediaQuery.of(context).size.width;
-    DatabaseService _db_service = DatabaseService();
+    DatabaseService _dbService = DatabaseService();
     return Container(
       child: SizedBox(
         height: appHeight * 0.65,
         width: appWidth * 0.80,
         child: FutureBuilder(
-          future: _db_service.fetchTitles(),
+          future: _dbService.fetchTitles(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              print(snapshot);
-              print(snapshot.data);
               return ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {

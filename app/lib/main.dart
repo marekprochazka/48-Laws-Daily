@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Future<Void> initDatabase() async {
+  Future initDatabase() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool didStarted = prefs?.getBool("didStarted") ?? false;
     if (!didStarted) {
