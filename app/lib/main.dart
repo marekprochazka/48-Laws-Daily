@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:app/router.dart';
+import 'package:app/services/database_service.dart';
 import 'package:app/src/pages/law_detail/law_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,14 +21,15 @@ class _MyAppState extends State<MyApp> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool didStarted = prefs?.getBool("didStarted") ?? false;
     if (!didStarted) {
-      print("GOING FOR DATABASE INIT");
+      DatabaseService _dbService = DatabaseService();
+      await _dbService.initDatabase();
+      print("INITIALIZING DATABSE");
       prefs.setBool("didStarted", true);
     }
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initDatabase();
   }
