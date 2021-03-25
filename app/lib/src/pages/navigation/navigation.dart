@@ -21,7 +21,7 @@ class Navigation extends StatelessWidget {
                 stops: [0.0, 1.0])),
         child: SafeArea(
           child: Column(
-            children: [
+            children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(
                   top: 14.0,

@@ -17,12 +17,16 @@ class ListElement extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () => Navigator.pushNamed(context, "/law-detail"),
-          child: Center(
-            child: Text(
-              "${law_id}. $law_title",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Text(
+                "${law_id}. $law_title",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
               ),
             ),
           ),

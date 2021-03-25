@@ -1,4 +1,5 @@
 import 'package:app/models/law.dart';
+import 'package:app/services/api_service.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -10,11 +11,13 @@ class DatabaseService {
         Batch batch = db.batch();
         batch.execute(
             "CREATE TABLE laws(id INTEGER PRIMARY KEY, title TEXT, content TEXT)");
-        var ids = [1, 2, 3, 4, 5];
-        ids.forEach((element) {
-          batch.execute(
-              "INSERT INTO laws(id, title, content) VALUES($element, 'Titulek', 'Pepeeeeek')");
-        });
+
+        ApiService api = ApiService();
+        List<Law> laws = await api.fetchLaws();
+
+        laws.forEach((law) => batch.execute(
+            "INSERT INTO laws(id, title, content) VALUES(${law.id}, '${law.title}', '${law.content}')"));
+
         List<dynamic> result = await batch.commit();
       },
       version: 1,
