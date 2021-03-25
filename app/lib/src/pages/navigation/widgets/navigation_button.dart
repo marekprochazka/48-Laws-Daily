@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/router.dart';
 
 class NavigationButton extends StatelessWidget {
   final String page_route;
@@ -26,7 +27,7 @@ class NavigationButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () => Navigator.pushNamed(context, page_route),
+            onTap: () => MyRouter.sailor.navigate(page_route),
             child: Center(
                 child: Text(
               page_title,

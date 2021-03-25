@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  MyRouter.createRoutes();
   runApp(MyApp());
 }
 
@@ -38,8 +39,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
-        initialRoute: '/law-detail',
-        onGenerateRoute: MyRouter.generateRoute,
+        onGenerateRoute: MyRouter.sailor.generator(),
+        navigatorKey: MyRouter.sailor.navigatorKey,
         theme: ThemeData(
           fontFamily: 'Ubuntu',
           // This is the theme of your application.

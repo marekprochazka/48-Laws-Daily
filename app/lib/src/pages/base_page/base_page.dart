@@ -1,3 +1,4 @@
+import 'package:app/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -32,7 +33,7 @@ class BasePage extends StatelessWidget {
                       bottom: 20.0,
                     ),
                     child: GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, '/navigation'),
+                      onTap: () => MyRouter.sailor.navigate("/navigation"),
                       child: SizedBox(
                         child: SvgPicture.asset("assets/images/menu_icon.svg"),
                       ),
