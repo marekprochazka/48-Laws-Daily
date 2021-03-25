@@ -18,8 +18,8 @@ class ListElement extends StatelessWidget {
           color: Color(0xFF505A92),
         ),
         child: InkWell(
-          onTap: () => MyRouter.sailor
-              .navigate("/law-detail", args: LawDetailArgs(lawId: lawId)),
+          onTap: () => MyRouter.sailor.navigate("/law-detail",
+              args: LawDetailArgs(lawId: lawId, isDaily: false)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
