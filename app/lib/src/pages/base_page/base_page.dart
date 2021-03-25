@@ -20,29 +20,7 @@ class BasePage extends StatelessWidget {
                 colors: <Color>[Color(0xFF899EC7), Color(0xFF4756A7)],
                 stops: [0.0, 1.0])),
         child: SafeArea(
-          child: Column(
-            children: [
-              child,
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20.0,
-                      left: 20.0,
-                      bottom: 20.0,
-                    ),
-                    child: GestureDetector(
-                      onTap: () => MyRouter.sailor.navigate("/navigation"),
-                      child: SizedBox(
-                        child: SvgPicture.asset("assets/images/menu_icon.svg"),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          child: child,
         ),
       ),
     );

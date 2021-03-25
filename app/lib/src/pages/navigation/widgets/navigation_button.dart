@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:app/router.dart';
+import 'package:sailor/sailor.dart';
 
 class NavigationButton extends StatelessWidget {
-  final String page_route;
-  final String page_title;
+  final String pageRoute;
+  final String pageTitle;
+  final dynamic args;
 
-  NavigationButton({this.page_route, this.page_title});
+  NavigationButton({this.pageRoute, this.pageTitle, this.args = null});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +29,13 @@ class NavigationButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () => MyRouter.sailor.navigate(page_route),
+            onTap: () => MyRouter.sailor.navigate(pageRoute,
+                args: args,
+                navigationType: NavigationType.pushAndRemoveUntil,
+                removeUntilPredicate: (route) => route.isFirst),
             child: Center(
                 child: Text(
-              page_title,
+              pageTitle,
               style: TextStyle(
                 fontSize: 24.0,
                 color: Colors.white,

@@ -1,6 +1,8 @@
 import 'package:app/src/pages/base_page/base_page.dart';
+import 'package:app/src/pages/law_detail/law_detail.dart';
 import 'package:app/src/pages/navigation/widgets/navigation_button.dart';
 import 'package:app/src/pages/navigation/widgets/navigation_title.dart';
+import 'package:app/src/utils/get_daily_law.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:app/router.dart';
@@ -32,20 +34,21 @@ class Navigation extends StatelessWidget {
                 ),
               ),
               NavigationButton(
-                page_route: "/law-detail",
-                page_title: "Zákon dne",
+                pageRoute: "/law-detail",
+                pageTitle: "Zákon dne",
+                args: LawDetailArgs(lawId: getDaiyLaw()),
               ),
               NavigationButton(
-                page_route: "/laws-list",
-                page_title: "Všechny zákony",
+                pageRoute: "/laws-list",
+                pageTitle: "Všechny zákony",
               ),
               NavigationButton(
-                page_route: "/TODO-about",
-                page_title: "O aplikaci",
+                pageRoute: "/TODO-about",
+                pageTitle: "O aplikaci",
               ),
               NavigationButton(
-                page_route: "/TODO-report",
-                page_title: "Nahlásit chybu",
+                pageRoute: "/TODO-report",
+                pageTitle: "Nahlásit chybu",
               ),
               Expanded(
                 child: Align(
