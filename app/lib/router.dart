@@ -43,7 +43,7 @@ class MyRouter {
       <SailorRoute>[
         SailorRoute(
           name: '/law-detail',
-          builder: (context, args, params) => LawDetail(),
+          builder: (context, args, params) => LawDetail(args),
         ),
         SailorRoute(
           name: '/navigation',

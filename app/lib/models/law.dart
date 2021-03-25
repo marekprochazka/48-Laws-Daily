@@ -24,4 +24,8 @@ class LawTitle {
   final String title;
 
   LawTitle({this.id, this.title});
+
+  LawTitle.fromJson(Map json)
+      : this.id = json["id"] as int,
+        this.title = json["title"] as String;
 }

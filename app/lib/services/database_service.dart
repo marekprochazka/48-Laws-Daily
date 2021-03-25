@@ -34,11 +34,15 @@ class DatabaseService {
         await _db.rawQuery("SELECT id, title FROM laws");
     List<LawTitle> lawTitlesList = List.generate(
       lawTitlesMap.length,
-      (index) => LawTitle(
-        id: lawTitlesMap[index]["id"],
-        title: lawTitlesMap[index]["title"],
-      ),
+      (index) => LawTitle.fromJson(lawTitlesMap[index]),
     );
     return lawTitlesList;
+  }
+
+  Future<Law> fetchLaw(int id) async {
+    Database _db = await database();
+    List<Map<String, dynamic>> query =
+        await _db.rawQuery("SELECT * FROM laws WHERE id=$id");
+    return Law.fromJson(json: query[0]);
   }
 }

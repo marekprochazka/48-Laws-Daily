@@ -21,8 +21,8 @@ class List extends StatelessWidget {
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
                     return ListElement(
-                      law_id: snapshot.data[index].id,
-                      law_title: snapshot.data[index].title,
+                      lawId: snapshot.data[index].id,
+                      lawTitle: snapshot.data[index].title,
                     );
                   });
             } else {

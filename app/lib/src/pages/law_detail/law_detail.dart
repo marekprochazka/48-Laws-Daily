@@ -1,10 +1,22 @@
+import 'package:app/models/law.dart';
 import 'package:app/src/pages/base_page/base_page.dart';
 import 'package:app/src/pages/law_detail/widgets/law_text.dart';
 import 'package:flutter/material.dart';
+import 'package:sailor/sailor.dart';
+
+class LawDetailArgs extends BaseArguments {
+  final int lawId;
+  LawDetailArgs({this.lawId});
+}
 
 class LawDetail extends StatelessWidget {
+  final LawDetailArgs args;
+
+  LawDetail(this.args);
+
   @override
   Widget build(BuildContext context) {
+    print(args.lawId);
     return BasePage(
       child: Container(
         child: Column(

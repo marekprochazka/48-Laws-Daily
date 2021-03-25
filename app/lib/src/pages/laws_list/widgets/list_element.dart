@@ -1,10 +1,12 @@
+import 'package:app/router.dart';
+import 'package:app/src/pages/law_detail/law_detail.dart';
 import 'package:flutter/material.dart';
 
 class ListElement extends StatelessWidget {
-  final int law_id;
-  final String law_title;
+  final int lawId;
+  final String lawTitle;
 
-  ListElement({this.law_id, this.law_title});
+  ListElement({this.lawId, this.lawTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +18,13 @@ class ListElement extends StatelessWidget {
           color: Color(0xFF505A92),
         ),
         child: InkWell(
-          onTap: () => Navigator.pushNamed(context, "/law-detail"),
+          onTap: () => MyRouter.sailor
+              .navigate("/law-detail", args: LawDetailArgs(lawId: lawId)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Text(
-                "${law_id}. $law_title",
+                "${lawId}. $lawTitle",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
