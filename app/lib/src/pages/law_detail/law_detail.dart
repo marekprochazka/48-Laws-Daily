@@ -1,4 +1,5 @@
 import 'package:app/models/law.dart';
+import 'package:app/services/database_service.dart';
 import 'package:app/src/pages/base_page/base_page.dart';
 import 'package:app/src/pages/law_detail/widgets/law_text.dart';
 import 'package:app/src/shared/back_button.dart';
@@ -20,48 +21,61 @@ class LawDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(args.lawId);
+    DatabaseService _db = DatabaseService();
     return BasePage(
-      child: Container(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 50.0,
-              ),
-              child: Center(
-                child: Text(
-                  "Zákon 1",
-                  style: TextStyle(
-                    color: Color(0xFFDFE1F1),
-                    fontSize: 32.0,
+      child: FutureBuilder(
+        future: _db.fetchLaw(args.lawId),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Container(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 50.0,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Zákon ${snapshot.data.id}",
+                        style: TextStyle(
+                          color: Color(0xFFDFE1F1),
+                          fontSize: 32.0,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 8.0,
-              ),
-              child: Center(
-                child: Text(
-                  "Nějakej zákon",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 34.0,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 8.0,
+                      left: 8.0,
+                      right: 8.0,
+                    ),
+                    child: Center(
+                      child: Text(
+                        snapshot.data.title,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 34.0,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 30.0,
+                    ),
+                    child: LawText(text: snapshot.data.content),
+                  ),
+                  args.isDaily ? NavigatorButton() : MyBackButton()
+                ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 30.0,
-              ),
-              child: LawText(),
-            ),
-            args.isDaily ? NavigatorButton() : MyBackButton()
-          ],
-        ),
+            );
+          } else {
+            return Text("loading...");
+          }
+        },
       ),
     );
   }
