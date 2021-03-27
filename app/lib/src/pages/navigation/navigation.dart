@@ -34,10 +34,19 @@ class Navigation extends StatelessWidget {
                   child: NavigationTitle(),
                 ),
               ),
-              NavigationButton(
-                pageRoute: "/law-detail",
-                pageTitle: "Zákon dne",
-                args: LawDetailArgs(lawId: getDaiyLaw()),
+              FutureBuilder(
+                future: getDaiyId(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return NavigationButton(
+                      pageRoute: "/law-detail",
+                      pageTitle: "Zákon dne",
+                      args: LawDetailArgs(lawId: snapshot.data),
+                    );
+                  } else {
+                    return Text("loading");
+                  }
+                },
               ),
               NavigationButton(
                 pageRoute: "/laws-list",

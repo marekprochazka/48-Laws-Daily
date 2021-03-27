@@ -18,4 +18,16 @@ class ApiService {
       throw Exception('Failed to load laws');
     }
   }
+
+  Future<int> fetchDailyId() async {
+    final Response response = await get(
+        Uri.https('lawsofpower.pythonanywhere.com', 'api/daily-id'),
+        headers: {'Content-Type': 'application/json', 'charset': 'utf-8'});
+    if (response.statusCode == 200) {
+      final String data = response.body;
+      final Map<String, dynamic> dataJSON = json.decode(data);
+      return dataJSON["id"];
+    } else
+      return 1;
+  }
 }

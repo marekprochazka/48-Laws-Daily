@@ -1,10 +1,15 @@
 import 'dart:ffi';
 
+import 'package:app/init.dart';
 import 'package:app/router.dart';
+import 'package:app/services/api_service.dart';
 import 'package:app/services/database_service.dart';
 import 'package:app/src/pages/law_detail/law_detail.dart';
+import 'package:app/src/pages/splash_screen/splash_screen.dart';
+import 'package:app/src/utils/get_daily_law.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   MyRouter.createRoutes();
@@ -18,23 +23,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Future initDatabase() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool didStarted = prefs?.getBool("didStarted") ?? false;
-    if (!didStarted) {
-      DatabaseService _dbService = DatabaseService();
-      await _dbService.initDatabase();
-      print("INITIALIZING DATABSE");
-      prefs.setBool("didStarted", true);
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    initDatabase();
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,6 +42,23 @@ class _MyAppState extends State<MyApp> {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: LawDetail(LawDetailArgs(lawId: 1)));
+        home: FutureBuilder(
+          future: MyInit.initialize(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return FutureBuilder(
+                  future: getDaiyId(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return LawDetail(LawDetailArgs(lawId: snapshot.data));
+                    } else {
+                      return Text("loading");
+                    }
+                  });
+            } else {
+              return SplashScreen();
+            }
+          },
+        ));
   }
 }
