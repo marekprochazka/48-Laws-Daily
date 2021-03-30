@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:app/init.dart';
 import 'package:app/router.dart';
 import 'package:app/services/api_service.dart';

@@ -7,7 +7,7 @@ import 'dart:convert';
 class ApiService {
   Future<List<Law>> fetchLaws() async {
     final Response response = await get(
-        Uri.https('lawsofpower.pythonanywhere.com', 'api/laws-list'),
+        Uri.https('lawsapieurope.ey.r.appspot.com', 'api/laws-list'),
         headers: {'Content-Type': 'application/json', 'charset': 'utf-8'});
     if (response.statusCode == 200) {
       List<dynamic> responseDecoded =
@@ -21,7 +21,7 @@ class ApiService {
 
   Future<int> fetchDailyId() async {
     final Response response = await get(
-        Uri.https('lawsofpower.pythonanywhere.com', 'api/daily-id'),
+        Uri.https('lawsapieurope.ey.r.appspot.com', 'api/daily-id'),
         headers: {'Content-Type': 'application/json', 'charset': 'utf-8'});
     if (response.statusCode == 200) {
       final String data = response.body;
