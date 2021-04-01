@@ -1,7 +1,7 @@
+import 'package:app/src/pages/about/about.dart';
 import 'package:app/src/pages/law_detail/law_detail.dart';
 import 'package:app/src/pages/laws_list/laws_list.dart';
 import 'package:app/src/pages/navigation/navigation.dart';
-import 'package:flutter/material.dart';
 import 'package:sailor/sailor.dart';
 
 // class MyRouter {
@@ -52,6 +52,10 @@ class MyRouter {
         SailorRoute(
           name: '/laws-list',
           builder: (context, args, params) => LawsList(),
+        ),
+        SailorRoute(
+          name: '/about',
+          builder: (context, args, params) => About(),
         ),
       ],
     );

@@ -1,12 +1,10 @@
-import 'package:app/src/pages/base_page/base_page.dart';
 import 'package:app/src/pages/law_detail/law_detail.dart';
 import 'package:app/src/pages/navigation/widgets/navigation_button.dart';
+import 'package:app/src/pages/navigation/widgets/navigation_button_link.dart';
 import 'package:app/src/pages/navigation/widgets/navigation_title.dart';
 import 'package:app/src/shared/cross_button.dart';
 import 'package:app/src/utils/get_daily_law.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:app/router.dart';
 
 class Navigation extends StatelessWidget {
   Navigation();
@@ -53,11 +51,12 @@ class Navigation extends StatelessWidget {
                 pageTitle: "Všechny zákony",
               ),
               NavigationButton(
-                pageRoute: "/TODO-about",
+                pageRoute: "/about",
                 pageTitle: "O aplikaci",
               ),
-              NavigationButton(
-                pageRoute: "/TODO-report",
+              NavigationButtonLink(
+                url:
+                    "https://github.com/marekprochazka/48-Laws-Daily/issues/new",
                 pageTitle: "Nahlásit chybu",
               ),
               CrossButton()

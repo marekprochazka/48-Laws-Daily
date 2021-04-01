@@ -2,7 +2,6 @@ import 'package:app/router.dart';
 import 'package:app/src/pages/navigation/widgets/navigation_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sailor/sailor.dart';
 
 class NavigatorButton extends StatelessWidget {
   @override

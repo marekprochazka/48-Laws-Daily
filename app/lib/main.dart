@@ -1,13 +1,9 @@
 import 'package:app/init.dart';
 import 'package:app/router.dart';
-import 'package:app/services/api_service.dart';
-import 'package:app/services/database_service.dart';
 import 'package:app/src/pages/law_detail/law_detail.dart';
 import 'package:app/src/pages/splash_screen/splash_screen.dart';
 import 'package:app/src/utils/get_daily_law.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:intl/intl.dart';
 
 void main() {
   MyRouter.createRoutes();

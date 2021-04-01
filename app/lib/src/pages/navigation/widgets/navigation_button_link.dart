@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:app/router.dart';
-import 'package:sailor/sailor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class NavigationButton extends StatelessWidget {
-  final String pageRoute;
+class NavigationButtonLink extends StatelessWidget {
+  final String url;
   final String pageTitle;
-  final dynamic args;
 
-  NavigationButton({this.pageRoute, this.pageTitle, this.args = null});
+  NavigationButtonLink({this.url, this.pageTitle});
+
+  void launchUrl() async {
+    await canLaunch(url) ? await launch(url) : print("cant launch $url");
+  }
 
   @override
   Widget build(BuildContext context) {
     final appWidth = MediaQuery.of(context).size.width;
+    final appHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(top: 50.0),
       child: Container(
@@ -28,10 +31,7 @@ class NavigationButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () => MyRouter.sailor.navigate(pageRoute,
-                args: args,
-                navigationType: NavigationType.pushAndRemoveUntil,
-                removeUntilPredicate: (route) => route.isFirst),
+            onTap: () => launchUrl(),
             child: Center(
                 child: Text(
               pageTitle,

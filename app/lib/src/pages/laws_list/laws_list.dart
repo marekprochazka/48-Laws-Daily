@@ -1,4 +1,3 @@
-import 'package:app/services/database_service.dart';
 import 'package:app/src/pages/base_page/base_page.dart';
 import 'package:app/src/pages/laws_list/widgets/list.dart';
 import 'package:app/src/shared/navigator_button.dart';

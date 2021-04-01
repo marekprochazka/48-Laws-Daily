@@ -1,4 +1,3 @@
-import 'package:app/models/law.dart';
 import 'package:app/services/database_service.dart';
 import 'package:app/src/pages/laws_list/widgets/list_element.dart';
 import 'package:flutter/material.dart';
